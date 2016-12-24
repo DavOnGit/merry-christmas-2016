@@ -38,14 +38,23 @@ aud.addEventListener("playing", function(e){
   aud.classList.add('is-playing');
 });
 
+aud.addEventListener("ended", function(e){
+  card.classList.add('flipped');
+});
+
 function switchState(a) {
-	if (a.paused == true) a.play();
-	else a.pause();
+	if (a.paused == true) {
+    a.play();
+    card.removeClassName('flipped');
+  }
+	else {
+    a.pause();
+    card.addClassName('flipped');
+  }
 }
 
 card.addEventListener('click', function() {
   switchState(aud);
-  card.toggleClassName('flipped');
 });
 
 var canvas = document.getElementById('snow'),
