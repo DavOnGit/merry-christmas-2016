@@ -36,20 +36,22 @@ aud.addEventListener("canplay", function(e){
 
 aud.addEventListener("playing", function(e){
   aud.classList.add('is-playing');
+  card.addClassName('flipped');
 });
 
 aud.addEventListener("ended", function(e){
   card.classList.add('flipped');
+  card.removeClassName('flipped');
 });
 
 function switchState(a) {
 	if (a.paused == true) {
     a.play();
-    card.removeClassName('flipped');
+    card.addClassName('flipped');
   }
 	else {
     a.pause();
-    card.addClassName('flipped');
+    card.removeClassName('flipped');
   }
 }
 
